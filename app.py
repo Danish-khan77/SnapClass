@@ -16,11 +16,16 @@ def main():
     if 'login_type' not in st.session_state:
         st.session_state['login_type'] = None
 
-    # Read join code from URL
+    # Read join code from URL and persist in session_state
     join_code = st.query_params.get('join-code')
+    if join_code and 'join_code' not in st.session_state:
+        st.session_state.join_code = join_code
+
+    # Use session_state for join_code (persists across reruns)
+    stored_join_code = st.session_state.get('join_code')
 
     # If join code exists, switch to student screen
-    if join_code:
+    if stored_join_code:
         if st.session_state.login_type != 'student':
             st.session_state.login_type = 'student'
             st.rerun()
@@ -37,11 +42,13 @@ def main():
 
     # Auto enroll student
     if (
-        join_code
+        stored_join_code
         and st.session_state.get('is_logged_in')
         and st.session_state.get('user_role') == 'student'
     ):
-        auto_enroll_dialog(join_code)
+        auto_enroll_dialog(stored_join_code)
+        # Clear after use to prevent re-enrollment
+        del st.session_state.join_code
 
 
 if __name__ == "__main__":
