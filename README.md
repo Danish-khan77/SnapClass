@@ -23,7 +23,7 @@
 | Platform | Description | Link |
 |---|---|---|
 | 🌐 Website | SnapClass Landing Page | [Visit Website](https://snap-class-three.vercel.app/) |
-| 🚀 Application | AI-Powered Smart Attendance System | [Launch Application](https://snapclass-dk.streamlit.app/) |
+| 🚀 Application | AI-Powered Attendance System | [Launch Application](https://snapclass-dk.streamlit.app/) |
 
 SnapClass is an AI-powered attendance management system designed to simplify classroom attendance. It replaces traditional manual roll calls with intelligent face and voice recognition, allowing teachers to record attendance efficiently while students can manage their enrollment and attendance records.
 
@@ -67,7 +67,6 @@ SnapClass uses computer vision and machine learning to identify students from cl
 5. Attendance is recorded for recognized students.
 
 **Technologies:**
-
 - Dlib
 - Face Recognition Models
 - Scikit-learn
@@ -86,7 +85,6 @@ SnapClass uses voice biometrics to identify students based on their individual v
 5. The identified student's attendance can be recorded.
 
 **Technologies:**
-
 - Librosa
 - Resemblyzer
 - PyTorch
@@ -166,7 +164,8 @@ Student Registration / Login
 | Category | Technologies |
 |---|---|
 | Programming Language | Python |
-| Frontend / UI | Streamlit |
+| Main Application UI | Streamlit |
+| Landing Page | HTML5, CSS3, JavaScript, Python |
 | Database | Supabase (PostgreSQL) |
 | Face Recognition | Dlib, Face Recognition Models |
 | Machine Learning | Scikit-learn |
@@ -179,7 +178,7 @@ Student Registration / Login
 | Authentication Security | bcrypt |
 | Version Control | Git & GitHub |
 | Landing Page Deployment | Vercel |
-| Application Deployment | Streamlit Community Cloud |
+| Main Application Deployment | Streamlit Community Cloud |
 
 ---
 
@@ -192,79 +191,92 @@ SnapClass/
 ├── requirements.txt
 ├── attendance_queries.sql
 │
-├── landing_page/
-│   ├── public/
-│   ├── src/
-│   ├── package.json
-│   └── ...
+├── src/
+│   ├── screens/
+│   │   ├── home_screen.py
+│   │   ├── teacher_screen.py
+│   │   └── student_screen.py
+│   │
+│   ├── components/
+│   │   ├── header.py
+│   │   ├── footer.py
+│   │   ├── subject_card.py
+│   │   └── ...
+│   │
+│   ├── database/
+│   ├── pipelines/
+│   └── ui/
 │
-└── src/
+└── landing_page/
     │
-    ├── screens/
-    │   ├── home_screen.py
-    │   ├── teacher_screen.py
-    │   └── student_screen.py
+    ├── app.py
+    ├── requirements.txt
     │
-    ├── components/
-    │   ├── header.py
-    │   ├── footer.py
-    │   ├── subject_card.py
-    │   ├── dialog_auto_enroll.py
-    │   └── ...
+    ├── static/
+    │   ├── css/
+    │   │   └── style.css
+    │   │
+    │   ├── fonts/
+    │   │
+    │   ├── img/
+    │   │   ├── demo/
+    │   │   └── app_logo.png
+    │   │
+    │   └── js/
+    │       └── script.js
     │
-    ├── database/
-    │   ├── config.py
-    │   └── ...
-    │
-    ├── pipelines/
-    │   ├── face_pipeline.py
-    │   └── ...
-    │
-    └── ui/
-        └── base_layout.py
+    └── templates/
+        └── index.html
 ```
+
+**Note:** Both applications have separate dependency files and can be managed independently.
+
+- Root `requirements.txt` contains dependencies for the main Streamlit application.
+- `landing_page/requirements.txt` contains dependencies for the landing page application.
+
+Virtual environments (`venv/`) are local development files and are not included in the repository.
 
 ---
 
 ## 🚀 Getting Started
 
-Follow these instructions to run SnapClass locally.
+### Main SnapClass Application
 
-### 1. Clone the Repository
+Follow these steps to run the AI attendance application locally.
+
+#### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Danish-khan77/SnapClass.git
 ```
 
-### 2. Navigate to the Project Directory
+#### 2. Navigate to the Project Directory
 
 ```bash
 cd SnapClass
 ```
 
-### 3. Create a Virtual Environment
+#### 3. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate it on Windows:
+Activate on Windows:
 
 ```powershell
 venv\Scripts\activate
 ```
 
-### 4. Install Dependencies
+#### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Configure Supabase
+#### 5. Configure Supabase
 
 Create a Supabase project and configure the required database tables.
-
-Add your Supabase credentials to Streamlit secrets.
 
 Create:
 
@@ -277,9 +289,9 @@ SUPABASE_KEY = "YOUR_SUPABASE_KEY"
 
 Use the exact secret names expected by your database configuration.
 
-**Important:** Never commit your actual database credentials or secrets to GitHub.
+**Important:** Never commit actual database credentials or secrets to GitHub.
 
-### 6. Run the Application
+#### 6. Run the Application
 
 ```bash
 streamlit run app.py
@@ -290,6 +302,42 @@ The application will be available at:
 ```text
 http://localhost:8501
 ```
+
+### Landing Page
+
+The landing page is maintained separately inside the `landing_page/` directory.
+
+It has its own:
+
+- `app.py`
+- `requirements.txt`
+- `templates/`
+- `static/css/`
+- `static/js/`
+- `static/img/`
+
+To install its dependencies independently:
+
+```bash
+cd landing_page
+python -m venv venv
+```
+
+Activate the environment on Windows:
+
+```powershell
+venv\Scripts\activate
+```
+
+Install its dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the landing page using the application entry point and run configuration defined in `landing_page/app.py`.
+
+The landing page is deployed independently through Vercel.
 
 ---
 
