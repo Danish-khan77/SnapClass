@@ -11,14 +11,19 @@
 </p>
 
 <p align="center">
-  <a href="https://snapclass-dk.streamlit.app/"><strong>🚀 Live Demo</strong></a>
+  <a href="https://snap-class-three.vercel.app/"><strong>🌐 Visit Website</strong></a>
+  &nbsp; | &nbsp;
+  <a href="https://snapclass-dk.streamlit.app/"><strong>🚀 Launch Application</strong></a>
 </p>
 
 ---
 
-## 🌐 Live Application
+## 🌐 Live Demo
 
-**Try SnapClass:** [https://snapclass-dk.streamlit.app/](https://snapclass-dk.streamlit.app/)
+| Platform | Description | Link |
+|---|---|---|
+| 🌐 Website | SnapClass Landing Page | [Visit Website](https://snap-class-three.vercel.app/) |
+| 🚀 Application | AI-Powered Smart Attendance System | [Launch Application](https://snapclass-dk.streamlit.app/) |
 
 SnapClass is an AI-powered attendance management system designed to simplify classroom attendance. It replaces traditional manual roll calls with intelligent face and voice recognition, allowing teachers to record attendance efficiently while students can manage their enrollment and attendance records.
 
@@ -54,6 +59,7 @@ SnapClass is an AI-powered attendance management system designed to simplify cla
 SnapClass uses computer vision and machine learning to identify students from classroom photographs.
 
 **Workflow:**
+
 1. Teacher uploads a classroom photograph.
 2. The system detects faces in the image.
 3. Facial features are converted into numerical embeddings.
@@ -61,6 +67,7 @@ SnapClass uses computer vision and machine learning to identify students from cl
 5. Attendance is recorded for recognized students.
 
 **Technologies:**
+
 - Dlib
 - Face Recognition Models
 - Scikit-learn
@@ -71,6 +78,7 @@ SnapClass uses computer vision and machine learning to identify students from cl
 SnapClass uses voice biometrics to identify students based on their individual voice characteristics.
 
 **Workflow:**
+
 1. Students speak during the attendance session.
 2. The system processes the recorded audio.
 3. Audio features and voice embeddings are extracted.
@@ -78,6 +86,7 @@ SnapClass uses voice biometrics to identify students based on their individual v
 5. The identified student's attendance can be recorded.
 
 **Technologies:**
+
 - Librosa
 - Resemblyzer
 - PyTorch
@@ -88,6 +97,7 @@ SnapClass uses voice biometrics to identify students based on their individual v
 Every subject can have a unique enrollment code and QR code.
 
 **Workflow:**
+
 1. Teacher creates a subject.
 2. SnapClass generates a subject code.
 3. A QR code and shareable joining link are generated.
@@ -109,21 +119,21 @@ Teacher Registration / Login
     Teacher Dashboard
           |
           v
-    Create Subject
+     Create Subject
           |
           v
  Generate QR Code & Join Link
           |
           v
-   Manage Enrolled Students
+  Manage Enrolled Students
           |
           v
-    Take Attendance
-       /       \
-      v         v
- Face AI     Voice AI
-      \         /
-       v       v
+     Take Attendance
+        /       \
+       v         v
+   Face AI    Voice AI
+       \         /
+        v       v
     Attendance Records
 ```
 
@@ -168,7 +178,8 @@ Student Registration / Login
 | QR Code Generation | Segno |
 | Authentication Security | bcrypt |
 | Version Control | Git & GitHub |
-| Deployment | Streamlit Community Cloud |
+| Landing Page Deployment | Vercel |
+| Application Deployment | Streamlit Community Cloud |
 
 ---
 
@@ -180,6 +191,12 @@ SnapClass/
 ├── app.py
 ├── requirements.txt
 ├── attendance_queries.sql
+│
+├── landing_page/
+│   ├── public/
+│   ├── src/
+│   ├── package.json
+│   └── ...
 │
 └── src/
     │
@@ -216,13 +233,13 @@ Follow these instructions to run SnapClass locally.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/danish-khan77/snapclass.git
+git clone https://github.com/Danish-khan77/SnapClass.git
 ```
 
 ### 2. Navigate to the Project Directory
 
 ```bash
-cd snapclass
+cd SnapClass
 ```
 
 ### 3. Create a Virtual Environment
